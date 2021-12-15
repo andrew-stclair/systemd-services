@@ -1,0 +1,15 @@
+[Unit]
+Description=Start/Stop WireGuard VPN %i
+After=network.target
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/usr/bin/wg-quick up %i
+ExecStop=/usr/bin/wg-quick down %i
+ExecReload=/usr/bin/wg-quick down %i && /usr/bin/wg-quick up %i
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
+DefaultInstance=wg0
