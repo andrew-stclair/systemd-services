@@ -1,0 +1,10 @@
+[Unit]
+Description="Restart WireGuard VPN %i"
+
+[Path]
+PathModified=/etc/wireguard/%i.conf
+Unit=wireguard@%i.service
+
+[Install]
+WantedBy=multi-user.target
+DefaultInstance=wg0
